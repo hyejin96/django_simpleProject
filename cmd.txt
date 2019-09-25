@@ -1,0 +1,22 @@
+1. python 버전 확인
+> python --version
+
+2. python 가상환경 설치
+> python -m venv myvenv
+
+3. python 가상환경 실행
+> myvenv\Scripts\activate
+
+4. 장고 설치하기(가상환경 실행 후)
+- virtualenv를 실행하기 전, 장고 설치하는데 필요한 pip이 최신 버전인지 확인
+> python -m pip install --upgrade pip
+
+- 장고 설치
+> pip install django~=2.0.0
+
+5. 장고 프로젝트 설치
+- 점 .은 현재 디렉토리에 장고를 설치하라고 스크립트에 알려줌
+> django-admin.py startproject mysite .
+
+6. 데이터 베이스 생성
+python manage.py migrate
