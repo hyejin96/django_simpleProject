@@ -64,3 +64,14 @@ nothing added to commit but untracked files present (use "git add" to track)
 (myvenv) C:\Users\GRAM\Desktop\2019\django>git remote add origin https://github.com/hyejin96/django_simpleProject.git
 
 (myvenv) C:\Users\GRAM\Desktop\2019\django>git push -u origin master
+
+11. pythonanywhere 작업
+> git clone https://github.com/hyejin96/django_simpleProject
+> tree django_simpleProject
+> cd django_simpleProject
+> virtualenv --python=python3.6 myvenv
+> pip install django~=2.0
+> source myvenv/bin/activate
+(myvenv) > pip install django~=2.0
+(myvenv) > python manage.py migrate
+(myvenv) > python manage.py createsuperuser

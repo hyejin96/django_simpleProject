@@ -26,7 +26,7 @@ SECRET_KEY = '6$eixn_0k_+bm7r+5^l#k+5he3vd5pq1k!ketfzuvfcthl)=ei'
 DEBUG = True
 
 # 연결 호스트 추가
-ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
 
 
 # Application definition
