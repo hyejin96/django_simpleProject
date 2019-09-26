@@ -19,4 +19,48 @@
 > django-admin.py startproject mysite .
 
 6. 데이터 베이스 생성
-python manage.py migrate
+> python manage.py migrate
+
+7. 데이터베이스에 변화가 생긴것을 알림, 데이터베이스에 새모델 추가(반영)
+> python manage.py makemigrations blog
+> python manage.py migrate blog
+
+8. 웹서버 실행
+> python manage.py runserver
+
+9. 사용자 추가
+> python manage.py createsuperuser
+
+10. 깃에 올리기
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git init
+Initialized empty Git repository in C:/Users/GRAM/Desktop/2019/django/.git/
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git config --global user.name "hyejin913"
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git config --global user.email you@example.com
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .gitignore
+        .vscode/
+        blog/
+        cmd.txt
+        manage.py
+        mysite/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git add --all .
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git commit -m "첫번째
+장고 커밋"
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git remote add origin https://github.com/hyejin96/django_simpleProject.git
+
+(myvenv) C:\Users\GRAM\Desktop\2019\django>git push -u origin master
