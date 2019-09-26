@@ -32,6 +32,7 @@
 > python manage.py createsuperuser
 
 10. 깃에 올리기
+- 처음할 때
 (myvenv) C:\Users\GRAM\Desktop\2019\django>git init
 Initialized empty Git repository in C:/Users/GRAM/Desktop/2019/django/.git/
 
@@ -65,6 +66,14 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 (myvenv) C:\Users\GRAM\Desktop\2019\django>git push -u origin master
 
+- 수정작업 후
+> git status
+> git add --all .
+> git status
+> git commit -m "change
+all related django blog templete"
+> git push
+
 11. pythonanywhere 작업
 > git clone https://github.com/hyejin96/django_simpleProject
 > tree django_simpleProject
@@ -82,8 +91,89 @@ nothing added to commit but untracked files present (use "git add" to track)
 - WSGI 파일 설정
   <your-username>_pythonanywhere_com_wsgi.py 수정
 
-12. django 
-1. mysite/url 패턴 만들기
-2. blog/url 패턴 만들기
-3. view 만들기
-4. 해당 html 템플릿 만들기
+----------------수정작업 후-------------------
+> git pull
+
+12. django 작업
+(1) 어플리케이션 만들기(startapp)
+(2) setting에 어플리케이션 등록
+(3) 해당 어플리케이션 모델 만들기
+(4) mysite/url 패턴 만들기
+(5) blog/url 패턴 만들기
+(6) view 만들기
+(7) 해당 html 템플릿 만들기
+
+13. pythonanywhere bash 작업
+- 파이썬 shell로 들어가기
+(myvenv) > python manage.py shell
+
+- blog의 모델을 불러온다.
+(InteractiveConsole)
+>>> from blog.models import Post
+
+- 모든 객체 불러오기
+>>> Post.objects.all()
+<QuerySet []>
+
+- 객체 만들기
+  ※ 에러 남
+ >>> Post.objects.create(author=me, title='Sample title', text='Test')
+ Traceback (most recent call last):
+   File "<console>", line 1, in <module>
+ NameError: name 'me' is not defined
+
+  ※ 에러 수정(User모델 부르기)
+ >>> from django.contrib.auth.models import User
+
+ - user에 속한 객체 불러오기
+ >>> User.objects.all()
+ <QuerySet [<User: hyejin913>, <User: admin>]>
+
+ - me라는 객체 만들기
+ >>> me = User.objects.get(username = 'admin')
+
+ - 객체 다시 만들기
+ >>> Post.objects.create(author=me, title='Sample title', text='Test')
+ <Post: Sample title>
+
+ - 모든 객체 불러오기
+ >>> Post.objects.all()
+ <QuerySet [<Post: Sample title>]>
+
+- 필터 걸기
+>>> Post.objects.filter(author=me)
+<QuerySet [<Post: Sample title>]>
+
+>>> Post.objects.filter(title__contains='title')
+<QuerySet [<Post: Sample title>]>
+
+- 시간을 불러오기 위해 timezone을 임포트한다.
+>>> from django.utils import timezone
+
+>>> Post.objects.filter(published_date__lte=timezone.now())
+<QuerySet []>
+
+- 게시하려는 게시물의 인스턴스 값 가져오기
+>>> post = Post.objects.get(title="Sample title")
+
+- publish를 이용해 게시하기
+>>> post.publish()
+
+>>> Post.objects.filter(published_date__lte=timezone.now())
+<QuerySet [<Post: Sample title>]>
+
+- 정렬하기
+>>> Post.objects.order_by('created_date')
+<QuerySet [<Post: Sample title>]>
+
+- 역순으로 정렬하기
+>>> Post.objects.order_by('-created_date')
+<QuerySet [<Post: Sample title>]>
+
+- 필터걸기(시간 + 정렬)
+>>> Post.objects.filter(published_date__lte=timezone.now()).order_by('publis
+hed_date')
+<QuerySet [<Post: Sample title>]>
+
+- 나가기
+>>> exit()
