@@ -75,3 +75,15 @@ nothing added to commit but untracked files present (use "git add" to track)
 (myvenv) > pip install django~=2.0
 (myvenv) > python manage.py migrate
 (myvenv) > python manage.py createsuperuser
+------------------1차 마무리작업--------------
+- web 클릭 후, Add a new web app 선택
+- Python 3.6 클릭
+- 가상환경 설정 (/home/<your-username>/<projectName>/myvenv/)
+- WSGI 파일 설정
+  <your-username>_pythonanywhere_com_wsgi.py 수정
+
+12. django 
+1. mysite/url 패턴 만들기
+2. blog/url 패턴 만들기
+3. view 만들기
+4. 해당 html 템플릿 만들기
